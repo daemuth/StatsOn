@@ -14,7 +14,7 @@ namespace StatsOn.mod
 
         public static string GetName()
         {
-            return "NoMoCtrl";
+            return "StatsOn";
         }
 
         public static int GetVersion()
