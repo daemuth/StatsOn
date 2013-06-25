@@ -1,0 +1,9 @@
+C:\Users\Alex\Desktop\scrollsmod\Template.mod\StatsOn\bin\Debug\StatsOn.mod.dll
+C:\Users\Alex\Desktop\scrollsmod\Template.mod\StatsOn\bin\Debug\StatsOn.mod.pdb
+C:\Users\Alex\Desktop\scrollsmod\Template.mod\StatsOn\bin\Debug\Assembly-CSharp.dll
+C:\Users\Alex\Desktop\scrollsmod\Template.mod\StatsOn\bin\Debug\Mono.Cecil.dll
+C:\Users\Alex\Desktop\scrollsmod\Template.mod\StatsOn\bin\Debug\ScrollsModLoader.Interfaces.dll
+C:\Users\Alex\Desktop\scrollsmod\Template.mod\StatsOn\bin\Debug\UnityEngine.dll
+C:\Users\Alex\Desktop\scrollsmod\Template.mod\StatsOn\obj\Debug\StatsOn.mod.csprojResolveAssemblyReference.cache
+C:\Users\Alex\Desktop\scrollsmod\Template.mod\StatsOn\obj\Debug\StatsOn.mod.dll
+C:\Users\Alex\Desktop\scrollsmod\Template.mod\StatsOn\obj\Debug\StatsOn.mod.pdb
