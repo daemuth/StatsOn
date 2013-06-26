@@ -54,7 +54,7 @@ namespace StatsOn.mod
                 }
 
                 //the first update happens before the game is done initializing, causing it the stats to look weird until after the first refresh
-                if (_init > 10)
+                if (_init > 20)
                 {
                     _showStatsInfo = typeof (BattleMode).GetField("showUnitStats",
                                                                   BindingFlags.NonPublic | BindingFlags.Instance);
