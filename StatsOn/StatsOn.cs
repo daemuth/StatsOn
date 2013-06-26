@@ -45,8 +45,7 @@ namespace StatsOn.mod
 
         public override void AfterInvoke(InvocationInfo info, ref object returnValue)
         {
-            if (_done) return;
-
+            
             if (info.targetMethod.Equals("Update"))
             {
                 if (_battleMode == null)
@@ -57,11 +56,15 @@ namespace StatsOn.mod
                 FieldInfo _turnInfo = typeof(BattleMode).GetField("currentTurn", BindingFlags.NonPublic | BindingFlags.Instance);
                 var turn = (int)_turnInfo.GetValue(_battleMode);
 
-                if (turn < 1) return;
+                if (turn < 1)
+                {
+                    _done = false;
+                    return;
+                }
 
                 _showStatsInfo = typeof (BattleMode).GetField("showUnitStats", BindingFlags.NonPublic | BindingFlags.Instance);
 
-                if (_showStatsInfo != null && !(bool) _showStatsInfo.GetValue(_battleMode))
+                if (_showStatsInfo != null && !(bool) _showStatsInfo.GetValue(_battleMode) && !_done)
                 {
                     typeof (BattleMode).GetMethod("toggleUnitStats", BindingFlags.NonPublic | BindingFlags.Instance)
                                        .Invoke(_battleMode, null);
