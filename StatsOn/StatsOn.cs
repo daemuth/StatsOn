@@ -18,14 +18,14 @@ namespace StatsOn.mod
 
         public static int GetVersion()
         {
-            return 2;
+            return 1;
         }
 
         public static MethodDefinition[] GetHooks(TypeDefinitionCollection scrollsTypes, int version)
         {
             try
             {
-                return new[]
+                return new MethodDefinition[]
                     {
                         scrollsTypes["BattleMode"].Methods.GetMethod("Update")[0]
                     };
