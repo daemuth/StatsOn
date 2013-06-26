@@ -7,8 +7,7 @@ namespace StatsOn.mod
     public class StatsOn : BaseMod
     {
         private BattleMode _battleMode;
-        private int _init;
-        private int _lastTurn;
+        private bool _done;
         private FieldInfo _showStatsInfo;
 
 
@@ -19,7 +18,7 @@ namespace StatsOn.mod
 
         public static int GetVersion()
         {
-            return 1;
+            return 2;
         }
 
         public static MethodDefinition[] GetHooks(TypeDefinitionCollection scrollsTypes, int version)
@@ -46,41 +45,29 @@ namespace StatsOn.mod
 
         public override void AfterInvoke(InvocationInfo info, ref object returnValue)
         {
+            if (_done) return;
+
             if (info.targetMethod.Equals("Update"))
             {
                 if (_battleMode == null)
                 {
                     _battleMode = (BattleMode) info.target;
-                }
+                } 
 
-                //the first update happens before the game is done initializing, causing it the stats to look weird until after the first refresh
-                if (_init > 20)
+                FieldInfo _turnInfo = typeof(BattleMode).GetField("currentTurn", BindingFlags.NonPublic | BindingFlags.Instance);
+                var turn = (int)_turnInfo.GetValue(_battleMode);
+
+                if (turn < 1) return;
+
+                _showStatsInfo = typeof (BattleMode).GetField("showUnitStats", BindingFlags.NonPublic | BindingFlags.Instance);
+
+                if (_showStatsInfo != null && !(bool) _showStatsInfo.GetValue(_battleMode))
                 {
-                    _showStatsInfo = typeof (BattleMode).GetField("showUnitStats",
-                                                                  BindingFlags.NonPublic | BindingFlags.Instance);
-
-                    if (_showStatsInfo != null && !(bool) _showStatsInfo.GetValue(_battleMode))
-                    {
-                        typeof (BattleMode).GetMethod("toggleUnitStats", BindingFlags.NonPublic | BindingFlags.Instance)
-                                           .Invoke(_battleMode, null);
-                    }
-
-
-                    //units being attacked seems to cause the stats for that unit to turn off (but showUnitStats is still true)
-                    //so setting showUnitStats to false at the beginning of each turn, causing an update for all of them, seems to be the easiest fix
-
-                    FieldInfo _turnInfo = typeof (BattleMode).GetField("currentTurn",
-                                                                       BindingFlags.NonPublic | BindingFlags.Instance);
-                    var turn = (int) _turnInfo.GetValue(_battleMode);
-
-                    if (turn > _lastTurn)
-                    {
-                        _showStatsInfo.SetValue(_battleMode, false);
-                        _lastTurn = turn;
-                    }
+                    typeof (BattleMode).GetMethod("toggleUnitStats", BindingFlags.NonPublic | BindingFlags.Instance)
+                                       .Invoke(_battleMode, null);
                 }
-                else
-                    _init++;
+
+                _done = true;
             }
         }
     }
