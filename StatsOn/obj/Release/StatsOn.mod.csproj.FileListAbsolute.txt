@@ -1,0 +1,8 @@
+d:\Cloud\Dropbox\Scrolls mods\StatsOn\StatsOn\bin\Release\StatsOn.mod.dll
+d:\Cloud\Dropbox\Scrolls mods\StatsOn\StatsOn\bin\Release\Assembly-CSharp.dll
+d:\Cloud\Dropbox\Scrolls mods\StatsOn\StatsOn\bin\Release\JsonFx.dll
+d:\Cloud\Dropbox\Scrolls mods\StatsOn\StatsOn\bin\Release\Mono.Cecil.dll
+d:\Cloud\Dropbox\Scrolls mods\StatsOn\StatsOn\bin\Release\ScrollsModLoader.Interfaces.dll
+d:\Cloud\Dropbox\Scrolls mods\StatsOn\StatsOn\bin\Release\UnityEngine.dll
+d:\Cloud\Dropbox\Scrolls mods\StatsOn\StatsOn\obj\Release\StatsOn.mod.csprojResolveAssemblyReference.cache
+d:\Cloud\Dropbox\Scrolls mods\StatsOn\StatsOn\obj\Release\StatsOn.mod.dll

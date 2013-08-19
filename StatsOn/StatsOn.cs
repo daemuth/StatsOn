@@ -18,7 +18,7 @@ namespace StatsOn.mod
 
         public static int GetVersion()
         {
-            return 1;
+            return 2;
         }
 
         public static MethodDefinition[] GetHooks(TypeDefinitionCollection scrollsTypes, int version)
@@ -37,10 +37,9 @@ namespace StatsOn.mod
         }
 
 
-        public override bool BeforeInvoke(InvocationInfo info, out object returnValue)
+        public override void BeforeInvoke(InvocationInfo info)
         {
-            returnValue = null;
-            return false;
+            return;
         }
 
         public override void AfterInvoke(InvocationInfo info, ref object returnValue)
